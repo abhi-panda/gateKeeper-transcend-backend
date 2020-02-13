@@ -1,0 +1,11 @@
+LOAD DATA LOCAL INFILE 'C:\\Users\\Abhishek Panda\\Desktop\\XLScripts\\fin.csv' REPLACE INTO TABLE `annuals`.`guests` FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\r\n' (`uid`, `name`, `email`, `totalAdults`, `totalKids`, `adultsArrived`, `kidsArrived`);
+
+
+On Windows (a little bit easier):
+1. Run the following statement in MySQL Workbench:
+SET GLOBAL local_infile = 'ON';
+2. Run the following statement and make sure it shows ON:
+SHOW VARIABLES LIKE "local_infile";
+3. SHOW VARIABLES LIKE "secure_file_priv"; //Then you'll get the default path, usually C:\ProgramData\MySQL\MySQL Server 8.0\Uploads
+4. Put your files into the folder shown in step 3
+5. LOAD DATA without the LOCAL keyword (i.e., LOAD DATA INFILE 'your_file' INTO TABLE table_name ...)
